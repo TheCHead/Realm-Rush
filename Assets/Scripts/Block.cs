@@ -47,4 +47,18 @@ public class Block : MonoBehaviour
             FindObjectOfType<TowerSpawner>().PlaceTower(this);
         }
     }
+
+    public void MakeBlockPlacable()
+    {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.enabled = true;
+        isPlaceable = true;
+    }
+
+    public void MakeBlockNotPlacable()
+    {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.enabled = false;
+        isPlaceable = false;
+    }
 }

@@ -27,7 +27,7 @@ public class TowerSpawner : MonoBehaviour
     {
         Tower newTower = Instantiate(towerPrefab, block.transform.position, Quaternion.identity);
         newTower.transform.parent = transform;
-        block.isPlaceable = false;
+        block.MakeBlockNotPlacable();
         newTower.SetBaseBlock(block);
         myTowers.Enqueue(newTower);
     }
@@ -35,11 +35,11 @@ public class TowerSpawner : MonoBehaviour
     private void MoveTower(Block block)
     {
         Tower towerToMove = myTowers.Dequeue();
-        towerToMove.GetBaseBlock().isPlaceable = true;
+        towerToMove.GetBaseBlock().MakeBlockPlacable();
         
         towerToMove.transform.position = block.transform.position;
         towerToMove.SetBaseBlock(block);
-        block.isPlaceable = false;
+        block.MakeBlockNotPlacable();
 
         myTowers.Enqueue(towerToMove);
     }

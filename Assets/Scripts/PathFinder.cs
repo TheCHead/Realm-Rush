@@ -112,12 +112,12 @@ public class PathFinder : MonoBehaviour
     private void FindShortestPath()
     {
         Block currentBlock = endBlock;
-        currentBlock.isPlaceable = false;
+        currentBlock.MakeBlockNotPlacable();
         while (currentBlock.GetExploredFromBlock())
         {
             shortestPath.Add(currentBlock);
             currentBlock = currentBlock.GetExploredFromBlock();
-            currentBlock.isPlaceable = false;
+            currentBlock.MakeBlockNotPlacable();
         }
         shortestPath.Add(startBlock);
         shortestPath.Reverse();
